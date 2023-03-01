@@ -82,7 +82,7 @@
                 android:id="@+id/tvUserAge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="64dp"
                 android:text="Age"
                 android:textColor="@color/black"
                 android:textSize="20dp"
