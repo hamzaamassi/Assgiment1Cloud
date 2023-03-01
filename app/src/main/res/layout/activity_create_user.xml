@@ -14,6 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="16dp"
+
         android:autofillHints=""
         android:drawablePadding="8dp"
         android:ems="10"
@@ -22,11 +23,13 @@
         android:minHeight="48dp"
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <EditText
-        android:id="@+id/etUserNumber"
+        android:id="@+id/etUserAge"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -35,8 +38,8 @@
         android:autofillHints=""
         android:drawablePadding="8dp"
         android:ems="10"
-        android:hint="User Number"
-        android:inputType="textPersonName"
+        android:hint="User Age"
+        android:inputType="number"
         android:minHeight="48dp"
         android:paddingHorizontal="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,11 +49,31 @@
         tools:ignore="HardcodedText,MissingConstraints,TextFields" />
 
     <EditText
-        android:id="@+id/etUserAddress"
+        android:id="@+id/etUserEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="User Email"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUserAge"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etUserAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:autofillHints=""
         android:drawablePadding="8dp"
@@ -62,7 +85,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUserNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etUserEmail"
+        tools:ignore="HardcodedText,MissingConstraints" />
+
+    <EditText
+        android:id="@+id/etUserNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
+        android:drawablePadding="8dp"
+        android:ems="10"
+        android:hint="User Number"
+        android:inputType="number"
+        android:minHeight="48dp"
+        android:paddingHorizontal="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etUserAddress"
         tools:ignore="HardcodedText,MissingConstraints" />
 
     <androidx.appcompat.widget.AppCompatButton

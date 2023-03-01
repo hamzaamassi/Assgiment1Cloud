@@ -1,25 +1,27 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.assignment1
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.assignment1.databinding.ActivityMainBinding
 import com.example.test2.adapter.UserAdapter
 import com.example.test2.modle.User
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var firebaseFirestore: FirebaseFirestore
+    private lateinit var progressDialog: ProgressDialog
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        showDialog()
         firebaseFirestore = FirebaseFirestore.getInstance()
         fun addUserActivity() {
             val intent = Intent(this, CreateUserActivity::class.java)
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                     val cats = it.result.map {
                         it.toObject(User::class.java)
                     }
+                    hideDialog()
                     val userAdapter = UserAdapter(
                         this,
                         cats as ArrayList<User>
@@ -52,5 +55,15 @@ class MainActivity : AppCompatActivity() {
 
             }
     }
+    private fun showDialog() {
+        progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Creating ....")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+    }
 
+    private fun hideDialog() {
+        if (progressDialog.isShowing)
+            progressDialog.dismiss()
+    }
 }

@@ -35,7 +35,7 @@ class UserAdapter(
         return data.size
     }
 
-    @SuppressLint("SuspiciousIndentation")
+    @SuppressLint("SuspiciousIndentation", "SetTextI18n")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentUser = data[position]
             holder.binding.root.setOnLongClickListener {
@@ -73,9 +73,11 @@ class UserAdapter(
 
             }
 
-        holder.binding.tvUserName.text = currentUser.name
-        holder.binding.tvUserNumber.text = currentUser.number
-        holder.binding.tvUserAddress.text = currentUser.address
+        holder.binding.tvUserName.text = "Name: ${currentUser.name}"
+        holder.binding.tvUserAge.text = "Age: ${currentUser.age}"
+        holder.binding.tvUserEmail.text = "Email: ${currentUser.email}"
+        holder.binding.tvUserNumber.text = "Number: ${currentUser.number}"
+        holder.binding.tvUserAddress.text = "Address: ${currentUser.address}"
         }
 
 

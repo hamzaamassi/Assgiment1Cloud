@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
+
     android:backgroundTint="#999">
 
     <androidx.cardview.widget.CardView
@@ -18,50 +19,80 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:text="Name"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_category"
-                app:layout_constraintEnd_toStartOf="@+id/btnEdit"
-                app:layout_constraintTop_toTopOf="@+id/iv_category" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,SpUsage" />
+
+            <TextView
+                android:id="@+id/tvUserEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/tvUserName"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserName"
+                tools:ignore="HardcodedText,SpUsage" />
+
             <TextView
                 android:id="@+id/tvUserNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginTop="8dp"
                 android:text="Number"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_category"
-                app:layout_constraintEnd_toStartOf="@+id/btnEdit"
-                app:layout_constraintTop_toTopOf="@+id/iv_category" />
+                app:layout_constraintStart_toStartOf="@+id/tvUserAddress"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserAddress"
+                tools:ignore="HardcodedText,SpUsage" />
+
             <TextView
                 android:id="@+id/tvUserAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
+                android:layout_marginTop="8dp"
                 android:text="Address"
                 android:textColor="@color/black"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/iv_category"
-                app:layout_constraintEnd_toStartOf="@+id/btnEdit"
-                app:layout_constraintTop_toTopOf="@+id/iv_category" />
+                app:layout_constraintStart_toStartOf="@+id/tvUserEmail"
+                app:layout_constraintTop_toBottomOf="@+id/tvUserEmail"
+                tools:ignore="HardcodedText,SpUsage" />
+
+            <TextView
+                android:id="@+id/tvUserAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Age"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tvUserName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvUserName"
+                tools:ignore="HardcodedText,SpUsage" />
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

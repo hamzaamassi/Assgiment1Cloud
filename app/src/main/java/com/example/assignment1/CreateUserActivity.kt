@@ -1,5 +1,8 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.assignment1
 
+import android.app.ProgressDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -12,9 +15,12 @@ class CreateUserActivity : AppCompatActivity() {
     private lateinit var createUserBinding: ActivityCreateUserBinding
     private lateinit var firebaseFirestore: FirebaseFirestore
     private var usersCollectionReference: CollectionReference? = null
+    private lateinit var progressDialog: ProgressDialog
     private var userName = ""
-    private var userNumber = ""
+    private var userAge = ""
+    private var userEmail = ""
     private var userAddress = ""
+    private var userNumber = ""
 
     companion object {
         var userId: String? = ""
@@ -28,6 +34,7 @@ class CreateUserActivity : AppCompatActivity() {
         firebaseFirestore = FirebaseFirestore.getInstance()
 
         createUserBinding.btnSave.setOnClickListener {
+            showDialog()
             createUser()
         }
 
@@ -35,15 +42,21 @@ class CreateUserActivity : AppCompatActivity() {
 
     private fun createUser() {
         userName = createUserBinding.etUserName.text.toString()
-        userNumber = createUserBinding.etUserNumber.text.toString()
+        userAge = createUserBinding.etUserAge.text.toString()
+        userEmail = createUserBinding.etUserEmail.text.toString()
         userAddress = createUserBinding.etUserAddress.text.toString()
+        userNumber = createUserBinding.etUserNumber.text.toString()
         usersCollectionReference = firebaseFirestore.collection("users")
         if (userName.isEmpty()) {
             Toast.makeText(this, "Name required", Toast.LENGTH_SHORT).show()
-        } else if (userNumber.isEmpty()) {
-            Toast.makeText(this, "Number required", Toast.LENGTH_SHORT).show()
-        } else if (userAddress.isEmpty()) {
+        } else if (userAge.isEmpty()) {
+            Toast.makeText(this, "Age required", Toast.LENGTH_SHORT).show()
+        } else if (userEmail.isEmpty()) {
+            Toast.makeText(this, "Email required", Toast.LENGTH_SHORT).show()
+        }else if (userAddress.isEmpty()) {
             Toast.makeText(this, "Address required", Toast.LENGTH_SHORT).show()
+        }else if (userNumber.isEmpty()) {
+            Toast.makeText(this, "Number required", Toast.LENGTH_SHORT).show()
         } else {
             storeUserInDB()
 
@@ -54,11 +67,11 @@ class CreateUserActivity : AppCompatActivity() {
         userId = usersCollectionReference!!.document().id
         val data = HashMap<String, String>()
         data["name"] = userName
-        data["number"] = userNumber
+        data["age"] = userAge
+        data["email"] = userEmail
         data["address"] = userAddress
+        data["number"] = userNumber
         data["userId"] = userId!!
-//        val db = Firebase.firestore
-//        db.collection("users").document(userId!!).set(data)
         usersCollectionReference!!.document(userId!!).set(data)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
@@ -73,6 +86,18 @@ class CreateUserActivity : AppCompatActivity() {
                     ).show()
 
                 }
+                hideDialog()
             }
+    }
+    private fun showDialog() {
+        progressDialog = ProgressDialog(this)
+        progressDialog.setMessage("Creating ....")
+        progressDialog.setCancelable(false)
+        progressDialog.show()
+    }
+
+    private fun hideDialog() {
+        if (progressDialog.isShowing)
+            progressDialog.dismiss()
     }
 }
