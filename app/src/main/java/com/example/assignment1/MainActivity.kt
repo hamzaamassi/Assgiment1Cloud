@@ -48,9 +48,9 @@ class MainActivity : AppCompatActivity() {
                         this,
                         cats as ArrayList<User>
                     )
-                    binding.rvCategory.layoutManager =
+                    binding.rvUsers.layoutManager =
                         LinearLayoutManager(this)
-                    binding.rvCategory.adapter = userAdapter
+                    binding.rvUsers.adapter = userAdapter
                 }
 
             }
