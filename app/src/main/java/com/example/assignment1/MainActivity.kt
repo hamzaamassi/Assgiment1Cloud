@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
         readeData()
-        binding.fabAddCategory.setOnClickListener {
+        binding.fabCreateUser.setOnClickListener {
             addUserActivity()
         }
 
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun showDialog() {
         progressDialog = ProgressDialog(this)
-        progressDialog.setMessage("Creating ....")
+        progressDialog.setMessage("Loading ....")
         progressDialog.setCancelable(false)
         progressDialog.show()
     }
