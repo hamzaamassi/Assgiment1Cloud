@@ -1,10 +1,10 @@
-package com.example.test2.modle
+package com.example.assignment1.modle
 
 data class User(
-    var userId: String = "",
-    var name: String = "",
-    var address: String = "",
-    var number: String = "",
-    var email: String = "",
-    var age: String = "",
+    var userId: String? = null,
+    var name: String? = null,
+    var age: String? = null,
+    var address: String? = null,
+    var number: String? = null,
+    var email: String? = null,
 )

@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.assignment1.databinding.ActivityMainBinding
-import com.example.test2.adapter.UserAdapter
-import com.example.test2.modle.User
+import com.example.assignment1.adapter.UserAdapter
+import com.example.assignment1.modle.User
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MainActivity : AppCompatActivity() {

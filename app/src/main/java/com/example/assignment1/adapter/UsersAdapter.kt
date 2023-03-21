@@ -1,4 +1,4 @@
-package com.example.test2.adapter
+package com.example.assignment1.adapter
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.assignment1.databinding.ItemUserBinding
-import com.example.test2.modle.User
+import com.example.assignment1.modle.User
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -44,25 +44,27 @@ class UserAdapter(
                 alertDialog.setMessage("Are you sure to delete User ?")
 //                alertDialog.setIcon(R.drawable.delete)
                 alertDialog.setPositiveButton("Yes") { _, _ ->
-                    firebaseFirestore
-                        .collection("users")
-                        .document(currentUser.userId)
-                        .delete()
-                        .addOnCompleteListener {
-                            if (it.isSuccessful) {
-                                Toast.makeText(
-                                    activity,
-                                    "Deleted Successfully",
-                                    Toast.LENGTH_SHORT
-                                )
-                                    .show()
-                            } else {
-                                Toast.makeText(activity, "Something Error ", Toast.LENGTH_LONG)
-                                    .show()
+                    currentUser.userId?.let { it1 ->
+                        firebaseFirestore
+                            .collection("users")
+                            .document(it1)
+                            .delete()
+                            .addOnCompleteListener {
+                                if (it.isSuccessful) {
+                                    Toast.makeText(
+                                        activity,
+                                        "Deleted Successfully",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                        .show()
+                                } else {
+                                    Toast.makeText(activity, "Something Error ", Toast.LENGTH_LONG)
+                                        .show()
+                                }
+
+
                             }
-
-
-                        }
+                    }
 
                 }
                 alertDialog.setNegativeButton("No") { _, _ ->
@@ -79,7 +81,5 @@ class UserAdapter(
         holder.binding.tvUserNumber.text = "Number: ${currentUser.number}"
         holder.binding.tvUserAddress.text = "Address: ${currentUser.address}"
         }
-
-
     }
 
